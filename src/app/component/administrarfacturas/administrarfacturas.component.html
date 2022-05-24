@@ -1,0 +1,300 @@
+<div class="container-fluid">
+    <app-navbar></app-navbar>
+    <br>
+</div>
+<div class="row justify-content-center">
+
+    <div class="col-11">
+      <div class="row">
+        <div class="col-7">
+          <h2>FACTURAS
+          </h2>
+      </div>
+      <div class="col-1 d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-success btn-sm mb-1 rounded" (click)="nuevaFactura()">Agregar Factura</button>
+      </div>
+      <div class="col-1 d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-success btn-sm mb-1 rounded" (click)="nuevaFactura()">Agregar Detalle</button>
+    </div>
+    <div class="col-1 d-flex justify-content-end">
+      <button type="button" class="btn btn-outline-success btn-sm mb-1 rounded" (click)="nuevaFactura()">Agregar Mesa</button>
+  </div>
+  <div class="col-1 d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-success btn-sm mb-1 rounded" (click)="nuevaFactura()">Agregar Mesero</button>
+</div>
+<div class="col-1 d-flex justify-content-end">
+  <button type="button" class="btn btn-outline-success btn-sm mb-1 rounded" (click)="nuevaFactura()">Agregar Supervisor</button>
+</div>
+    </div>
+      <div style="position: relative; height: 400px; overflow: auto; overflow-x: hidden;">
+
+          <div>
+
+
+              <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table bg-white table-hover shadow p-0 mb-3 bg-white rounded">
+              <thead style="inset-block-start: 0; position: sticky; " class="thead-dark">
+                  <tr>
+                      <th>Factura</th>
+                      <th>Fecha Factura</th>
+                      <th>Plato</th>
+                      <th>Valor</th>
+                      <th>Supervisor</th>
+                      <th>Número de Mesa</th>
+                      <th>Mesa</th>
+                      <th>Puestos</th>
+                      <th>Identificación de Cliente</th>
+                      <th>Cliente</th>
+                      <th>Teléfono Cliente</th>
+                      <th>Dirección Cliente</th>
+                      <th>Codigo Mesero</th>
+                      <th>Nombre Mesero</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+          <tr *ngFor="let facturas of obj_Facturas; let i = index ">
+              <td>
+                  {{facturas.codigoFactura}}
+              </td>
+              <td>
+                {{facturas.fechaFactura|date}}
+              </td>
+              <td>
+                {{facturas.plato}}
+              </td>
+              <td>
+                {{facturas.valor|currency}}
+              </td>
+              <td>
+                {{facturas.supervisor}}
+              </td>
+              <td>
+                {{facturas.numeroMesa}}
+              </td>
+              <td>
+                {{facturas.mesa}}
+              </td>
+              <td>
+                {{facturas.puestos}}
+              </td>
+              <td>
+                {{facturas.identificacionCliente}}
+              </td>
+              <td>
+                {{facturas.nombreCliente}}
+              </td>
+              <td>
+                {{facturas.telefonoCliente}}
+              </td>
+              <td>
+                {{facturas.direccionCliente}}
+              </td>
+              <td>
+                {{facturas.codigoMesero}}
+              </td>
+              <td>
+                {{facturas.nombreMesero}}
+              </td>
+          </tr>
+              </tbody>
+          </table>
+          </div>
+      </div>
+
+</div>
+<div class="row">
+  <div class="row">
+      <div class="col-10">
+          <h2>CONSULTAS
+          </h2>
+          <div class="row">
+            <label class="col-1 col-form-label  "></label>
+
+            <label class="col-2 col-form-label  ">Por Fecha:</label>
+
+            <div class="col-2">
+                <select name="mes" class="form-select form-select-sm mb-3" id="mesList">
+            <option selected value= 100 disabled>Mes</option>
+            <option value= 01>Enero</option>
+            <option value= 02>Febrero</option>
+            <option value= 03>Marzo</option>
+            <option value= 04>Abril</option>
+            <option value= 05>Mayo</option>
+            <option value= 06>Junio</option>
+            <option value= 07>Julio</option>
+            <option value= 08>Agosto</option>
+            <option value= 09>Septiembre</option>
+            <option value= 10>Octubre</option>
+            <option value= 11>Noviembre</option>
+            <option value= 12>Diciembre</option>
+        </select>
+            </div>
+            <label class="col-2 col-form-label  ">Año:</label>
+            <div class="col-2">
+                <select name="anio" class="form-select form-select-sm mb-3" id="anioList">
+            <option selected value= 100 disabled>Año</option>
+            <option >2020</option>
+            <option >2021</option>
+            <option >2022</option>
+            <option >2023</option>
+        </select>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-outline-dark  btn-sm  mb-1 rounded" id="botonFiltro" style="margin-right:8px;">Filtrar Fecha</button>  <!--(click)="buscarMes()"  -->
+                 <button class="btn btn-outline-danger btn-sm  mb-1 rounded"  id="eliminarFiltro" hidden="true">Eliminar Filtro</button>  <!--(click)="eliminarFiltro() -->
+            </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="col-12 justify-content-center" id="animation2">
+    <div class="row justify-content-center" style="height: 40rem;">
+        <div id="animation" class="card bg-light mb-3 ml-5 mg-1 col-sm-10 col-md-10 col-lg- col-xl-3 col-xxl-3 " style="margin-top: 30px; border-radius: 50px; background: #e0e0e0;  ">
+            <div class="row justify-content-center ">
+                <div class="col ">
+                    <div class="card-header " style="background-color: transparent; ">
+                        <div class="col justify-content-center ">
+                            <div class="row">
+                                <h2>
+                                    CONSUMO CLIENTES
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" card-body ">
+                    <!-- <app-administrarcompromisosxproveedoresgrafica></app-administrarcompromisosxproveedoresgrafica> -->
+                    <div class="table-responsive">
+                      <table class="table bg-white table-hover shadow p-0 mb-3 bg-white rounded">
+                          <thead style="inset-block-start: 0; position: sticky; " class="thead-dark">
+                              <tr>
+                                  <th>Cliente</th>
+                                  <th>Nombre</th>
+                                  <th>Apellido</th>
+                                  <th>Consumo</th>
+
+
+                              </tr>
+                          </thead>
+                          <tbody>
+                      <tr *ngFor="let consumo of obj_ConsumoClientes; let i = index ">
+                          <td>
+                              {{consumo.cliente}}
+                          </td>
+                          <td>
+                            {{consumo.nombre}}
+                          </td>
+                          <td>
+                            {{consumo.apellido}}
+                          </td>
+                          <td>
+                            {{consumo.suma|currency}}
+                          </td>
+
+                      </tr>
+                          </tbody>
+                      </table>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div id="animation" class="card bg-light mb-3 ml-5 mg-1 col-sm-10 col-md-10 col-lg-5 col-xl-3 col-xxl-3 " style="margin-top: 30px; border-radius: 50px; background: #e0e0e0;">
+            <div class="row justify-content-center ">
+                <div class="col ">
+                    <div class="card-header " style="background-color: transparent; ">
+                        <div class="col justify-content-center ">
+                            <h2>Platos Más Vendidos
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class=" card-body ">
+
+                  <div class="table-responsive">
+                    <table class="table bg-white table-hover shadow p-0 mb-3 bg-white rounded">
+                        <thead style="inset-block-start: 0; position: sticky; " class="thead-dark">
+                            <tr>
+                                <th>Plato</th>
+                                <th>Cantidad</th>
+                                <th>Acomulado</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                    <tr *ngFor="let masVendido of obj_MasVendidos; let i = index ">
+                        <td>
+                            {{masVendido.plato}}
+                        </td>
+                        <td>
+                          {{masVendido.cantidad}}
+                        </td>
+                        <td>
+                          {{masVendido.suma|currency}}
+                        </td>
+
+
+                    </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="animation" class="card bg-light mb-3 ml-5 mg-1 col-sm-10 col-md-10 col-lg-5 col-xl-3 col-xxl-3 " style="margin-top: 30px; border-radius: 50px; background: #e0e0e0;">
+          <div class="row justify-content-center ">
+              <div class="col ">
+                  <div class="card-header " style="background-color: transparent; ">
+                      <div class="col justify-content-center ">
+                          <h2>Mejores Meseros
+                          </h2>
+                      </div>
+                  </div>
+              </div>
+              <div class=" card-body ">
+
+
+                <div class="table-responsive">
+                  <table class="table bg-white table-hover shadow p-0 mb-3 bg-white rounded">
+                      <thead style="inset-block-start: 0; position: sticky; " class="thead-dark">
+                          <tr>
+                              <th>Mesero</th>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Acomulado Vendido</th>
+
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                  <tr *ngFor="let ventaMesero of obj_VentaMesero; let i = index ">
+                      <td>
+                          {{ventaMesero.mesero}}
+                      </td>
+                      <td>
+                        {{ventaMesero.nombre}}
+                    </td>
+                      <td>
+                        {{ventaMesero.apellido}}
+                      </td>
+                      <td>
+                        {{ventaMesero.suma|currency}}
+                      </td>
+
+
+                  </tr>
+                      </tbody>
+                  </table>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+</div>
+</div>

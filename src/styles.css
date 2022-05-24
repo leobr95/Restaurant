@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: small !important;
+}
+
+h2 {
+    font-family: Verdana, sans-serif !important;
+    font-weight: bold !important;
+    font-size: x-large !important;
+}
+
+nav {
+    font-size: medium;
+}
+
+#animation:hover {
+    transition: ease 0, 5s all;
+    animation: none;
+    transform: rotateX(10deg);
+    box-shadow: 20px 20px 60px #8b8b8b, -20px -20px 60px #ffffff !important;
+}
+
+#animation2 {
+    flex-wrap: wrap;
+    overflow: scroll;
+    height: 85vh;
+    scroll-snap-type: both mandatory;
+    overflow-x: hidden;
+}
+
+#animation {
+    scroll-snap-align: start;
+}

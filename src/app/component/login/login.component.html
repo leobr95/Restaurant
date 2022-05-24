@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!-- <link href="~/Content/login.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-offset-4 col-sm-offset-3 col-xs-offset-3">
+                <div class="account-wall">
+                    <div class="row">
+                        <div class="col-xs-6 col-xs-offset-3" style="margin-bottom: 1em;">
+                            <!-- <img class="img-responsive" src="../../../assets/img/centerlogogvs.jpg" alt="GVS Colombia" /> -->
+                            <h2>RESTAURANTE DEL SUR <i class="bi  bi-egg-fried"></i></h2>
+                            <img class="img-responsive" src="assets/img/centerlogogvs.jpg" alt="GVS Colombia" />
+                        </div>
+                    </div>
+
+                    <form (ngSubmit)="ValidarAcceso(formaValidarAcceso)" #formaValidarAcceso="ngForm" id="form1" class="form-signin">
+
+                        <div>
+                            <div class="text-center" style=" margin-left: 0.5em;">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="usuario" name="usuario" [(ngModel)]="usuario" placeholder="Usuario">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="passUser" name="passUser" [(ngModel)]="passUser" placeholder="Contraseña">
+                                </div>
+                            </div>
+
+                            <button type="submit" id="btnSubmit" class="btn btn-lg btn-secondary btn-block">Iniciar Sesión</button>
+
+                            <!-- <div id="PanelLoginError" class="alert alert-danger" style=" margin-top: 2em;">
+
+                            </div> -->
+                            <!-- <div class="text-right">
+                                <br />
+                                <a id="HyperLink1" href="#">Registrarse</a>
+                            </div> -->
+
+                        </div>
+                    </form>
+                    <h4>Sitio Creado Por Leonardo Burbano</h4>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
